@@ -1,0 +1,76 @@
+<html>
+<head> 
+  <title>10.5 Part 2: Intersection  </title>
+  <meta charset="utf-8">
+
+</head>
+
+<body>
+
+  <h2>10.5 Part 2: Intersection</h2>
+  <p> Part 2 of our list requires us to determine when the catcher and a raindrop intersect. Intersection functionality is what we want to focus on developing in this step. We will start with a simple bouncing ball class (which we saw in Example5-6) and work out how to determine when two bouncing circles intersect. During the “ integration ”process, this intersect( ) function will be incorporated into the Catcher class to catch raindrops.  </p>
+
+Pseudocode: <br>
+ • Erase background. <br>
+ • Draw an ellipse at the mouse location. <br><br>
+ 
+Translating it into code is easy: <br>
+
+ void setup() { <br>
+   size(400,400); <br>
+   smooth(); <br>
+ } <br>
+ 
+ void draw() { <br>
+ background(255); <br>
+ stroke(0); <br>
+ fill(175); <br>
+ ellipse(mouseX,mouseY,64,64); <br>
+ } <br>
+ 
+ <p>This is good step, but we are not done. As stated, our goal is to develop the rain catcher program in an object-oriented manner. When we take this code and incorporate it into the final program, we will want to have it separated out into a class so that we can make a “ catcher ”object. Our pseudocode would be revised to look like the following. </p>
+
+ Setup: <br>
+ • Initialize catcher object. <br><br>
+ Draw: <br>
+ • Erase background. <br>
+ • Set catcher location to mouse location. <br>
+ • Display catcher. <br><br>
+ 
+  Example 10-1: Catcher <br>
+ Catcher catcher; <br>
+ void setup() { <br>
+ size(400,400); <br>
+ catcher = new Catcher(32); <br>
+ smooth(); <br>
+ } <br><br>
+ void draw() { <br>
+ background(255); <br>
+ catcher.setLocation(mouseX,mouseY); <br>
+ catcher.display(); <br>
+ }<br>
+ 
+ <p>The Catcher class itself is rather simple, with variables for location and size, and two functions, one to set the location and one to display. </p>
+
+class Catcher { <br>
+ float r; // radius <br>
+ float x,y; // location <br>
+ Catcher(float tempR) { <br>
+ r = tempR; <br>
+ x = 0; <br>
+ y = 0; <br>
+ } <br><br>
+  void setLocation(float tempX, float tempY) { <br>
+ x = tempX; <br>
+ y = tempY; <br>
+ } <br><br>
+ void display() { <br>
+ stroke(0); <br>
+ fill(175); <br>
+ ellipse(x,y,r*2,r*2); <br>
+ } <br>
+ } <br>
+ <br>
+</body>
+
+</html>
